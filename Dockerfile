@@ -9,11 +9,10 @@ RUN adduser --disabled-password --gecos '' devuser
 # Diretório de trabalho dentro do container
 WORKDIR /home/devuser/app
 
-COPY requirements.txt .
 COPY pyproject.toml .
 
-RUN pip install --no-cache-dir -r requirements.txt && pip install -e .
+RUN pip install .[test,lint]
 
 COPY . .
 
-CMD ["pytest"]
+CMD [ "pytest" ]
