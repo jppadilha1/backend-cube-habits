@@ -11,8 +11,8 @@ WORKDIR /home/devuser/app
 
 COPY pyproject.toml .
 
-RUN pip install .[test,lint]
+##RUN pip install .[test,lint]
 
 COPY . .
 
-CMD [ "pytest" ]
+CMD [ "sleep", "infinity" ]

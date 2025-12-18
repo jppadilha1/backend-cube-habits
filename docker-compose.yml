@@ -1,27 +1,4 @@
 services:
-  db:
-    image: postgres:15.15
-    container_name: db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=cubehabits
-    ports:
-      - "5434:5432"
-
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@example.com
-      - PGADMIN_DEFAULT_PASSWORD=admin
-    ports:
-      - "5050:80"
-    depends_on:
-      - db
-
   app:
     build:
       context: .
@@ -29,12 +6,16 @@ services:
     container_name: app
     volumes:
       - .:/home/devuser/app
-    depends_on:
-      - db
     environment:
-      - DATABASE_URL=postgresql+asyncpg://user:password@db/cubehabits
+      - DATABASE_URL=${DATABASE_URL}
     ports:
       - "8000:8000"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 512M
     #command:
     # [
     #  "/bin/sh",

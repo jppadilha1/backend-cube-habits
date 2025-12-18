@@ -14,10 +14,10 @@
       "editor.defaultFormatter": "charliermarsh.ruff"
     }
   },
-  "mounts": [
-    "source=${localWorkspaceFolder},target=/home/devuser/app,type=bind"
-  ],
-  "postCreateCommand": "pip install -e .[test,lint]",
+  //"mounts": [
+  //  "source=${localWorkspaceFolder},target=/home/devuser/app,type=bind"
+  //],
+  //"postCreateCommand": "pip install -e .[test,lint]",
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",
