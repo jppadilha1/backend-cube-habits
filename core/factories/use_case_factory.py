@@ -1,22 +1,23 @@
 from typing import Optional
+
 from core.domain.repositories import (
-    IHabitRepository,
     IHabitLogRepository,
+    IHabitRepository,
     IUserRepository,
 )
 from core.domain.use_cases import (
     CreateHabit,
-    FindHabits,
-    UpdateHabit,
     DeleteHabit,
     FindAllLogs,
-    RegisterLog,
+    FindHabits,
     LoginUser,
+    RegisterLog,
     RegisterUser,
+    UpdateHabit,
 )
 from core.infra.mocks import (
-    MockHabitRepository,
     MockHabitLogRepository,
+    MockHabitRepository,
     MockUserRepository,
 )
 
@@ -58,3 +59,5 @@ class UseCaseFactory:
 
     def create_login_user(self) -> LoginUser:
         return LoginUser(user_repository=self.user_repository)
+    
+    def create_find_user_by_email(self) -> 
